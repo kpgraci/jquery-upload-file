@@ -511,10 +511,10 @@
             }
         }
 
-	    function updateFileCounter(s, obj) {
+	function updateFileCounter(s, obj) {
             if (s.showFileCounter) {
                 var count = $(obj.container).find(".ajax-file-upload-filename").length;
-                obj.fileCounter = count + 1
+                obj.fileCounter = count + 1;
                 if (s.uploadQueueOrder === "bottom") count = 1;
                 $(obj.container).find(".ajax-file-upload-filename").each(function (i, items) {
                     var arr = $(this).html().split(s.fileCounterStyle);
