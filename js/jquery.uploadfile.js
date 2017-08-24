@@ -511,19 +511,20 @@
             }
         }
 
-        function updateFileCounter(s, obj) {
-            if(s.showFileCounter) {
+	    function updateFileCounter(s, obj) {
+            if (s.showFileCounter) {
                 var count = $(obj.container).find(".ajax-file-upload-filename").length;
-                obj.fileCounter = count + 1;
+                obj.fileCounter = count + 1
+                if (s.uploadQueueOrder === "bottom") count = 1;
                 $(obj.container).find(".ajax-file-upload-filename").each(function (i, items) {
                     var arr = $(this).html().split(s.fileCounterStyle);
                     var fileNum = parseInt(arr[0]) - 1; //decrement;
                     var name = count + s.fileCounterStyle + arr[1];
                     $(this).html(name);
-                    count--;
+                    s.uploadQueueOrder === "top" ? count-- : count++;
                 });
             }
-        }
+        }	    
 
         function createCustomInputFile (obj, group, s, uploadLabel) {
 
